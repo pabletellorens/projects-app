@@ -20,9 +20,12 @@
       </tbody>
     </table>
   </div>
-  <FabButton />
+  <FabButton @click="() => console.log('cliked')">
+    <AddCircle />
+  </FabButton>
 </template>
 
 <script lang="ts" setup>
 import FabButton from '@/modulorum/commune/components/FabButton.vue';
+import AddCircle from '@/modulorum/commune/icons/AddCircle.vue';
 </script>
