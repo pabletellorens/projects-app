@@ -25,7 +25,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 
 interface Props {
   aperta: boolean;
@@ -34,7 +34,7 @@ interface Props {
   subtitulus: string;
 }
 
-defineProps<Props>();
+const props = defineProps<Props>();
 
 const emissiones = defineEmits<{
   claudere: [void];
@@ -44,6 +44,14 @@ const emissiones = defineEmits<{
 const inputValorem = ref<string>('');
 
 const inputRef = ref<HTMLInputElement | null>(null);
+
+watch(props, ({ aperta }) => {
+  setTimeout(() => {
+    if (aperta) {
+      inputRef.value?.focus();
+    }
+  }, 300);
+});
 
 const submitValorem = () => {
   console.log({ valorem: inputValorem });
