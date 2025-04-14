@@ -4,8 +4,6 @@ import type { Project } from '../interfaces/project.interface';
 import { v4 as uuidv4 } from 'uuid';
 import { useLocalStorage } from '@vueuse/core';
 
-
-
 export const useProjectsStore = defineStore('projects', () => {
   const projects = ref(useLocalStorage<Project[]>('project', []));
 
@@ -20,9 +18,11 @@ export const useProjectsStore = defineStore('projects', () => {
   };
 
   return {
-    // projects,
+    projects,
 
     projectList: computed(() => [...projects.value]),
     addereProject,
+
+    nonProject: computed(() => projects.value.length === 0),
   };
 });
